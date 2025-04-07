@@ -125,8 +125,12 @@ struct Home: View {
                 }
                 .padding()
             }
+            /*Paso 1.10 due to top edge is ignored...
+            .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)*/
+            //----ACTUALIZACION
             //Paso 1.10 due to top edge is ignored...
-            .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
+            .padding(.top, getSafeAreaTop()) // SOLUCIÓN: reemplazamos UIApplication.shared.windows para que sea compatible con iOS 15+
+
             .padding(.bottom,25)
             .background(Color("Color"))
             //Paso 1.13
@@ -150,6 +154,20 @@ struct Home: View {
         .edgesIgnoringSafeArea(.top)
     }
 }
+
+// SOLUCIÓN: Función para obtener el safe area top compatible con iOS 15+
+func getSafeAreaTop() -> CGFloat {
+    // Buscamos la escena activa que sea del tipo UIWindowScene
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+        // Obtenemos la primera ventana válida
+        if let window = windowScene.windows.first {
+            // Devolvemos el safeAreaInsets.top
+            return window.safeAreaInsets.top
+        }
+    }
+    return 0
+}
+
 
 #Preview {
     Home()
