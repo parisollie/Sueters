@@ -9,11 +9,13 @@ import SwiftUI
 
 struct BottomView : View {
     
+    //Paso 1.17
     @State var selectedSize = "S"
+    //Paso 1.21
     @State var count = 1
     
     var body: some View{
-        
+        //Paso 1.14
         HStack(spacing: 20){
             
             Text("T-Shirt")
@@ -41,6 +43,7 @@ struct BottomView : View {
         }
         .padding()
         
+        //Paso 1.16
         VStack(alignment: .leading, spacing: 12) {
             
             Text("Size")
@@ -49,7 +52,7 @@ struct BottomView : View {
             HStack(spacing: 15){
                 
                 ForEach(sizes,id: \.self){i in
-                    
+                    //Paso 1.18
                     Button(action: {
                         selectedSize = i
                     }) {
@@ -62,7 +65,7 @@ struct BottomView : View {
                             .background(
                             
                                 ZStack{
-                                    
+                                    //Paso 1.19
                                     RoundedRectangle(cornerRadius: 5)
                                         .fill(Color("Color1").opacity(selectedSize == i ? 1 : 0))
                                     
@@ -73,7 +76,7 @@ struct BottomView : View {
                     }
                 }
             }
-            
+            //Paso 1.20
             Text("About")
                 .fontWeight(.bold)
                 .padding(.top,10)
@@ -84,6 +87,7 @@ struct BottomView : View {
         }
         .padding(.horizontal)
         
+        //Paso 1.22
         HStack(spacing: 15){
             
             // cart buttons...
@@ -99,7 +103,7 @@ struct BottomView : View {
                     .clipShape(Circle())
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
             }
-            
+            //Paso 1.23
             Text("\(count)")
                 .font(.title)
                 .fontWeight(.bold)
@@ -120,7 +124,7 @@ struct BottomView : View {
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
             }
             
-            // add to cart...
+            //Paso 1.24 add to cart...
             
             Spacer(minLength: 0)
             
@@ -130,6 +134,7 @@ struct BottomView : View {
                     .foregroundColor(.white)
                     .fontWeight(.bold)
                     .padding(.vertical)
+                    //Paso 1.26
                     .padding(.horizontal,UIScreen.main.bounds.height < 750 ? 20 : 40)
                     .background(Color("Color1"))
                     .clipShape(Capsule())

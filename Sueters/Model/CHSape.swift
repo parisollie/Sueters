@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// custom bottom corner shape...
+//Paso 1.12 custom bottom corner shape...
 
 struct CHSape : Shape {
     
@@ -19,4 +19,5 @@ struct CHSape : Shape {
     }
 }
 
+//Paso 1.15
 var sizes = ["S","M","L","X","XX","XL","XXL"]
